@@ -53,20 +53,22 @@ public class ChangePlayer : MonoBehaviour
 
     private void ActivateCharacter(int nextCharacterIndex, int previousCharacterIndex)
     {
+        GameObject selectedCharacter = characterList[nextCharacterIndex];
+        
+        GameObject previousCharacter = characterList[previousCharacterIndex];
+
+        Vector3 previousCharacterVelocity = previousCharacter.GetComponent<Rigidbody2D>().velocity;
+
         foreach (GameObject character in characterList)
         {
             character.SetActive(false);
         }
 
-        GameObject selectedCharacter = characterList[nextCharacterIndex];
-        GameObject previousCharacter = characterList[previousCharacterIndex];
-
         selectedCharacter.transform.position = previousCharacter.transform.position;
 
         selectedCharacter.SetActive(true);
 
-        selectedCharacter.GetComponent<Rigidbody2D>().velocity = previousCharacter.GetComponent<Rigidbody2D>().velocity;
-
+        selectedCharacter.GetComponent<Rigidbody2D>().velocity = previousCharacterVelocity;
 
         actualCharacterIndex = nextCharacterIndex;
 
