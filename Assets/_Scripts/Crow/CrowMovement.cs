@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class CrowMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb2D;
 
@@ -20,9 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector3 boxDimentions;
     [SerializeField] private bool isGrounded;
 
-    [Header("Animation")]
+    [Header("Jump")]
     private Animator animator;
-
     private bool jumpBool = false;
 
     private void Start()
@@ -33,15 +32,11 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal") * movementSpeed;
-        animator.SetBool("isGrounded", isGrounded);
 
-        if (isGrounded)
+        // if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb2D.velocity = new Vector2(0, 0);
-        }
-
-        if (Input.GetButtonDown("Jump"))
-        {
+            Debug.Log("JUMMP");
             jumpBool = true;
         }
     }
@@ -50,27 +45,26 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapBox(groundCheck.position, boxDimentions, 0f, groundLayer);
 
-
-        Move(horizontalMovement * Time.fixedDeltaTime, jumpBool);
+        if (!isGrounded)
+        {
+            Move(horizontalMovement * Time.fixedDeltaTime, jumpBool);
+        }
 
         jumpBool = false;
     }
 
     private void Move(float movementDirection, bool jumpParameter)
     {
-        if (!isGrounded)
-        {
-            Vector3 velocidadObjetivo = new Vector2(movementDirection, rb2D.velocity.y);
-            rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velocity, movementDamping);
+        Vector3 velocidadObjetivo = new Vector2(movementDirection, rb2D.velocity.y);
+        rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velocity, movementDamping);
 
-            if (movementDirection > 0 && !lookingRight)
-            {
-                Turn();
-            }
-            else if (movementDirection < 0 && lookingRight)
-            {
-                Turn();
-            }
+        if (movementDirection > 0 && !lookingRight)
+        {
+            Turn();
+        }
+        else if (movementDirection < 0 && lookingRight)
+        {
+            Turn();
         }
 
         if (isGrounded && jumpParameter)
