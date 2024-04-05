@@ -19,11 +19,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Vector3 boxDimentions;
     [SerializeField] private bool isGrounded;
+
+    [Header("Animation")]
+    private Animator animator;
+
     private bool jumpBool = false;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal") * movementSpeed;
+        animator.SetBool("isGrounded", isGrounded);
+
+        if (isGrounded)
+        {
+            rb2D.velocity = new Vector2(0, 0);
+        }
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -35,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapBox(groundCheck.position, boxDimentions, 0f, groundLayer);
 
+
         Move(horizontalMovement * Time.fixedDeltaTime, jumpBool);
 
         jumpBool = false;
@@ -42,16 +58,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move(float movementDirection, bool jumpParameter)
     {
-        Vector3 velocidadObjetivo = new Vector2(movementDirection, rb2D.velocity.y);
-        rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velocity, movementDamping);
+        if (!isGrounded)
+        {
+            Vector3 velocidadObjetivo = new Vector2(movementDirection, rb2D.velocity.y);
+            rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velocity, movementDamping);
 
-        if (movementDirection > 0 && !lookingRight)
-        {
-            Turn();
-        }
-        else if (movementDirection < 0 && lookingRight)
-        {
-            Turn();
+            if (movementDirection > 0 && !lookingRight)
+            {
+                Turn();
+            }
+            else if (movementDirection < 0 && lookingRight)
+            {
+                Turn();
+            }
         }
 
         if (isGrounded && jumpParameter)
@@ -64,9 +83,7 @@ public class PlayerMovement : MonoBehaviour
     private void Turn()
     {
         lookingRight = !lookingRight;
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
     }
 
     private void OnDrawGizmos()
