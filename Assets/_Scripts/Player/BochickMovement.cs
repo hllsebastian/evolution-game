@@ -20,6 +20,7 @@ public class BochickMovement : MonoBehaviour
     [SerializeField] private Vector3 boxDimentions;
     [SerializeField] private bool isGrounded;
     private bool jumpBool = false;
+    private bool isJumping = false;
 
     [Header("Animation")]
     [SerializeField] private Animator animator;
@@ -63,7 +64,11 @@ public class BochickMovement : MonoBehaviour
 
         if (isGrounded && jumpParameter)
         {
-            animator.SetTrigger("Jump");
+            if (!isJumping)
+            {
+                isJumping = true;
+                animator.SetTrigger("Jump");
+            }
         }
     }
 
@@ -71,6 +76,7 @@ public class BochickMovement : MonoBehaviour
     {
         isGrounded = false;
         rb2D.AddForce(new Vector2(0f, jumpForce));
+        isJumping = false;
     }
 
     private void Turn()

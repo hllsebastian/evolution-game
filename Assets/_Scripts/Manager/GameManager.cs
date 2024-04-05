@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private NextLevelDoor nextLevelDoor;
     private int totalObjectives;
     private int actualDetroyectObjectives;
+    private bool isGameActive = true;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         actualDetroyectObjectives += 1;
 
-        if (actualDetroyectObjectives >= totalObjectives)
+        if (actualDetroyectObjectives >= totalObjectives && isGameActive)
         {
             Instantiate(keyPrefab, keySpawnPosition.position, Quaternion.identity);
         }
@@ -48,5 +49,10 @@ public class GameManager : MonoBehaviour
     public void KeyPickedUp()
     {
         nextLevelDoor.KeyPickedUp();
+    }
+
+    public void ChangeGameActiveBool(bool state)
+    {
+        isGameActive = state;
     }
 }

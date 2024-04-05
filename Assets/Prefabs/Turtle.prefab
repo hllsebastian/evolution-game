@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 749564591064992516}
   - component: {fileID: 749564591064992515}
   - component: {fileID: 749564591064992519}
+  - component: {fileID: 587628323}
   m_Layer: 6
   m_Name: Turtle
   m_TagString: Player
@@ -58,7 +59,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749564591064992513}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -179,3 +180,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 2
+--- !u!114 &587628323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749564591064992513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce7e55c45a66c240a0a140c4f683d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
+  playerDestroyParticles: {fileID: 4958694679639897973, guid: caef57a8511b72f4581d53d20aa8ef98, type: 3}
+  reloadSceneWaitTime: 1

@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7539646847782477951}
   - component: {fileID: 7539646847782477949}
   - component: {fileID: 7539646847782477944}
+  - component: {fileID: 1310759048}
   m_Layer: 6
   m_Name: Bochik
   m_TagString: Player
@@ -203,7 +204,7 @@ MonoBehaviour:
   rb2D: {fileID: 7539646847782477951}
   movementSpeed: 300
   movementDamping: 0.03
-  jumpForce: 300
+  jumpForce: 400
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -211,3 +212,18 @@ MonoBehaviour:
   boxDimentions: {x: 0.4, y: 0.11, z: 0}
   isGrounded: 0
   animator: {fileID: 7539646847782477949}
+--- !u!114 &1310759048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539646847782477939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce7e55c45a66c240a0a140c4f683d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
+  playerDestroyParticles: {fileID: 4958694679639897973, guid: caef57a8511b72f4581d53d20aa8ef98, type: 3}
+  reloadSceneWaitTime: 1
