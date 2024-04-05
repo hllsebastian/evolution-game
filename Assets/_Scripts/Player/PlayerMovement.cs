@@ -64,9 +64,7 @@ public class PlayerMovement : MonoBehaviour
     private void Turn()
     {
         lookingRight = !lookingRight;
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
     }
 
     private void OnDrawGizmos()
