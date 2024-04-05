@@ -21,7 +21,7 @@ public class BearAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !bearMove.IsMoving)
+        if (Input.GetButtonDown("Fire1") && !bearMove.IsMoving && !UIManager.isPaused)
         {
             Golpe();
         }
