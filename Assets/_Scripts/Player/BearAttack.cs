@@ -8,7 +8,7 @@ public class BearAttack : MonoBehaviour
     public string allowedTarget = "CanBeDestroyedByBear";
     [SerializeField] private Transform controladorGolpe;
     [SerializeField] private float radioGolpe;
-    [SerializeField] private float damage = 10;
+    [SerializeField] private float damage = 20;
     private Animator animator;
 
     private BearMove bearMove;

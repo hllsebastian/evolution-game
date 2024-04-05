@@ -13,13 +13,21 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
    
     void Start()
     {
-        PlayMusic(1);
-        
+        PlayMusic(0);    
     }
 
     void Update()

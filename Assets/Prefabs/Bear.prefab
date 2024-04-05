@@ -44,15 +44,16 @@ GameObject:
   - component: {fileID: 3233995201829464120}
   - component: {fileID: 3233995201829464126}
   - component: {fileID: 3233995201829464125}
-  - component: {fileID: 3233995201829464122}
   - component: {fileID: 3233995201829464116}
+  - component: {fileID: 2135810045381422958}
+  - component: {fileID: 6828796766566235760}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3233995201829464121
 Transform:
   m_ObjectHideFlags: 0
@@ -141,7 +142,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &3233995201829464126
 MonoBehaviour:
@@ -155,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891e18fb26eb56a4a9ebc12f72896c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 2
+  movespeed: 3
   theRB: {fileID: 3233995201829464120}
   anim: {fileID: 3233995201829464116}
   theSR: {fileID: 3233995201829464123}
@@ -176,23 +177,7 @@ MonoBehaviour:
   allowedTarget: CanBeDestroyedByBear
   controladorGolpe: {fileID: 3233995202178387342}
   radioGolpe: 0.5
-  damage: 10
---- !u!70 &3233995201829464122
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3233995201829464124}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.16752465, y: -0.5183317}
-  m_Size: {x: 1.4138882, y: 0.89355767}
-  m_Direction: 1
+  damage: 20
 --- !u!95 &3233995201829464116
 Animator:
   serializedVersion: 5
@@ -214,6 +199,47 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!61 &2135810045381422958
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3233995201829464124}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.70740074}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5851985}
+  m_EdgeRadius: 0
+--- !u!114 &6828796766566235760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3233995201829464124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce7e55c45a66c240a0a140c4f683d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
+  playerDestroyParticles: {fileID: 4958694679639897973, guid: caef57a8511b72f4581d53d20aa8ef98, type: 3}
+  reloadSceneWaitTime: 1
 --- !u!1 &3233995202178387341
 GameObject:
   m_ObjectHideFlags: 0

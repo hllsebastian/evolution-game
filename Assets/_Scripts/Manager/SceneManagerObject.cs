@@ -44,12 +44,31 @@ public class SceneManagerObject : MonoBehaviour
         StartCoroutine(ChangeSceneCoroutine(SceneManager.GetActiveScene().buildIndex));
     }
 
+    public void ReloadScene(float waitTime)
+    {
+        StartCoroutine(ReloadSceneWaitTime(waitTime));
+    }
+
     public IEnumerator ChangeSceneCoroutine(int sceneIndex)
     {
+        GameManager gameManager = GameManager.Instance;
+
+        if (gameManager != null)
+        {
+            gameManager.ChangeGameActiveBool(false);
+        }
+
         SceneTransitionUI.Instance.ExitScene();
 
         yield return new WaitForSeconds(timeBtwnSceneTransitions);
 
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    private IEnumerator ReloadSceneWaitTime(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        ReloadScene();
     }
 }
