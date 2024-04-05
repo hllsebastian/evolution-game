@@ -26,9 +26,8 @@ public class CrowShoot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1) && CanShoot())
+        if (Input.GetButtonDown("Fire1") && CanShoot())
         {
-            Debug.Log("SHOOT B");
             ShootFeather();
         }
     }

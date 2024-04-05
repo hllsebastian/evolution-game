@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6962438093949194163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19, y: -0.92, z: 0}
+  m_LocalPosition: {x: -0.19, y: -0.994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,17 +43,17 @@ GameObject:
   - component: {fileID: 6962438094509235883}
   - component: {fileID: 6962438094509235882}
   - component: {fileID: 6962438094509235886}
-  - component: {fileID: 6962438094509235885}
   - component: {fileID: 6962438094509235872}
   - component: {fileID: 6962438094509235873}
   - component: {fileID: 6962438094509235874}
+  - component: {fileID: 5622392957697388098}
   m_Layer: 6
   m_Name: Crow
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6962438094509235884
 Transform:
   m_ObjectHideFlags: 0
@@ -165,28 +165,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &6962438094509235885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6962438094509235881}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6dbeeb33868af418891834deddf7ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb2D: {fileID: 6962438094509235886}
-  movementSpeed: 250
-  movementDamping: 0.03
-  jumpForce: 200
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 9
-  groundCheck: {fileID: 6962438093949194164}
-  boxDimentions: {x: 0.8, y: 0.1, z: 0}
-  isGrounded: 1
 --- !u!114 &6962438094509235872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +193,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08789337, y: -0.35674316}
+  m_Offset: {x: 0, y: -0.66078335}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -226,7 +204,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4933212, y: 1.2658323}
+  m_Size: {x: 0.9761393, y: 0.6760708}
   m_EdgeRadius: 0
 --- !u!114 &6962438094509235874
 MonoBehaviour:
@@ -246,10 +224,25 @@ MonoBehaviour:
   jumpForce: 600
   groundLayer:
     serializedVersion: 2
-    m_Bits: 9
+    m_Bits: 8
   groundCheck: {fileID: 6962438093949194164}
-  boxDimentions: {x: 0.93, y: 0.2, z: 0}
+  boxDimentions: {x: 0.57, y: 0.11, z: 0}
   isGrounded: 1
+--- !u!114 &5622392957697388098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962438094509235881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce7e55c45a66c240a0a140c4f683d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
+  playerDestroyParticles: {fileID: 4958694679639897973, guid: caef57a8511b72f4581d53d20aa8ef98, type: 3}
+  reloadSceneWaitTime: 1
 --- !u!1 &6962438094533297055
 GameObject:
   m_ObjectHideFlags: 0

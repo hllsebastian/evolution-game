@@ -63,14 +63,15 @@ public class PlayerMovement : MonoBehaviour
             Vector3 velocidadObjetivo = new Vector2(movementDirection, rb2D.velocity.y);
             rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velocity, movementDamping);
 
-            if (movementDirection > 0 && !lookingRight)
-            {
-                Turn();
-            }
-            else if (movementDirection < 0 && lookingRight)
-            {
-                Turn();
-            }
+        }
+        
+        if (movementDirection > 0 && !lookingRight)
+        {
+            Turn();
+        }
+        else if (movementDirection < 0 && lookingRight)
+        {
+            Turn();
         }
 
         if (isGrounded && jumpParameter)
