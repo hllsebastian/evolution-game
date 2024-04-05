@@ -5,13 +5,24 @@ using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BirdShoot : MonoBehaviour
+public class CrowShoot : MonoBehaviour
 {
+    [Header("Shooter")]
     [SerializeField] GameObject featherPrefab;
     [SerializeField] Transform firePoint;
     [SerializeField] private float firingRate;
+
+    [Header("Animation")]
+    private Animator animator;
+
+
     private float lastBulletTime = 0;
     static public bool canShoot = true;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -24,8 +35,11 @@ public class BirdShoot : MonoBehaviour
 
     void ShootFeather()
     {
+        animator.SetTrigger("Attack");
+
         lastBulletTime = Time.time;
         GameObject FeatherBullet = Instantiate(featherPrefab, firePoint.position, firePoint.rotation);
+
         Destroy(FeatherBullet, 2.0f);
 
     }
