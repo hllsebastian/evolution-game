@@ -52,7 +52,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7539646847782477938
 Transform:
   m_ObjectHideFlags: 0
@@ -202,9 +202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 7539646847782477951}
-  movementSpeed: 300
+  movementSpeed: 250
   movementDamping: 0.03
-  jumpForce: 400
+  jumpForce: 300
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

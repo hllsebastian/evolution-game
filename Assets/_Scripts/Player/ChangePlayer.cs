@@ -6,6 +6,8 @@ public class ChangePlayer : MonoBehaviour
 {
     [SerializeField] private List<GameObject> characterList;
     [SerializeField] private float TimeBetweenCharacterChange;
+    [SerializeField] private GameObject changeAnimalEffect;
+    [SerializeField] private Vector3 spawnEffectOffset;
     private int actualCharacterIndex = 0;
     private float lastCharacterChangeTime = 0;
 
@@ -54,7 +56,7 @@ public class ChangePlayer : MonoBehaviour
     private void ActivateCharacter(int nextCharacterIndex, int previousCharacterIndex)
     {
         GameObject selectedCharacter = characterList[nextCharacterIndex];
-        
+
         GameObject previousCharacter = characterList[previousCharacterIndex];
 
         Vector3 previousCharacterVelocity = previousCharacter.GetComponent<Rigidbody2D>().velocity;
@@ -65,6 +67,8 @@ public class ChangePlayer : MonoBehaviour
         }
 
         selectedCharacter.transform.position = previousCharacter.transform.position;
+
+        ChangeAnimalEffect(selectedCharacter.transform.position);
 
         selectedCharacter.SetActive(true);
 
@@ -95,6 +99,11 @@ public class ChangePlayer : MonoBehaviour
         {
             return true;
         }
+    }
+
+    private void ChangeAnimalEffect(Vector3 position)
+    {
+        Instantiate(changeAnimalEffect, position + spawnEffectOffset, Quaternion.identity);
     }
 
 }
