@@ -1,0 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public interface IDestroyable
+{
+    public void DetroyObject();
+    public void DetroyObject(AttackTypeEnum attackType);
+
+}
