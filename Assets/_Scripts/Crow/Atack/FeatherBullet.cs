@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FeatherBullet : MonoBehaviour
 {
+    [SerializeField] private AttackTypeEnum attackType;
     [SerializeField] float speed;
 
     private void Update()
@@ -12,18 +13,16 @@ public class FeatherBullet : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("TriangleEnemy"))
+        if (other.TryGetComponent(out IDestroyable destroyable))
         {
-            Debug.Log("PLAYEERRR NOT");
+            destroyable.DetroyObject(attackType);
             Destroy(gameObject);
-            Destroy(other.gameObject);
-            Debug.Log("DESTROOYYY ENEMYY");
         }
-        else if (other.gameObject.CompareTag("Wall"))
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Debug.Log("WALL");
             Destroy(gameObject);
         }
     }

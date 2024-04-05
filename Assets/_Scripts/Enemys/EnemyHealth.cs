@@ -4,34 +4,30 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float vidaInicial = 100;
-    private float vidaActual; 
+    public float vidaInicial = 20;
+    private float vidaActual;
 
     public string etiquetaAtaquePermitido = "CanBeDestroyedByBear";
 
-    // Este método se llama al iniciar el juego
+    // Este mï¿½todo se llama al iniciar el juego
     void Start()
     {
-        vidaActual = vidaInicial; 
+        vidaActual = vidaInicial;
     }
 
     public void RestarVida(float cantidad)
     {
-      
-            vidaActual -= cantidad; 
-            Debug.Log("Vida restante: " + vidaActual); 
+        vidaActual -= cantidad;
 
-            if (vidaActual <= 0)
-            {
-               DerrotarObjetivo();
-            }
-        
+        if (vidaActual <= 0)
+        {
+            DerrotarObjetivo();
+        }
     }
 
     void DerrotarObjetivo()
     {
-        Debug.Log("El objetivo ha sido derrotado."); 
-        Destroy(gameObject); 
+        Destroy(gameObject);
     }
 }
 
