@@ -74,24 +74,25 @@ public class UIManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        Time.timeScale = 1f;
+        SceneManagerObject.Instance.ReloadScene();
     }
 
-    public void ChangeScene(string sceneName)
+    public void ChangeScene()
     {
-        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
+        SceneManagerObject.Instance.LoadScene(0);
     }
 
-    // Método para cambiar el estado del sonido
+   
     public void ToggleMute()
     {
         isMuted = !isMuted;
 
-        // Mutea o desmutea el audio de la escena
+        
         AudioListener.volume = isMuted ? 0f : 1f;
 
-        // Actualiza el estado de los botones
+       
         UpdateButtonState();
     }
 
