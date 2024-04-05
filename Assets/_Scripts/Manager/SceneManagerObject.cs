@@ -31,7 +31,7 @@ public class SceneManagerObject : MonoBehaviour
         int actualSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = actualSceneIndex + 1;
 
-        if (SceneManager.sceneCountInBuildSettings >= nextSceneIndex)
+        if (nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
         {
             nextSceneIndex = 0;
         }
