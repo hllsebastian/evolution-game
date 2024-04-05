@@ -9,17 +9,27 @@ public class BearAttack : MonoBehaviour
     [SerializeField] private Transform controladorGolpe;
     [SerializeField] private float radioGolpe;
     [SerializeField] private float damage = 10;
+    private Animator animator;
 
+    private BearMove bearMove;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        bearMove = GetComponent<BearMove>();
+    }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !bearMove.IsMoving)
         {
             Golpe();
         }
     }
     private void Golpe()
     {
+        animator.SetBool("isAttacking", true);
+
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radioGolpe);
 
         foreach (Collider2D colisionador in objetos)
@@ -36,4 +46,9 @@ public class BearAttack : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(controladorGolpe.position, radioGolpe);
     }
+    public void ResetAttack()
+    {
+        animator.SetBool("isAttacking", false);
+    }
+
 }
