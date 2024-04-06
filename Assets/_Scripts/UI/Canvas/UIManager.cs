@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        instance = this;      
     }
     
     void Start()
@@ -74,12 +74,14 @@ public class UIManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        isPaused = false;
         Time.timeScale = 1f;
-        SceneManagerObject.Instance.ReloadScene();
+        SceneManagerObject.Instance.ReloadScene();   
     }
 
     public void ChangeScene()
     {
+        isPaused = false;
         Time.timeScale = 1f;
         SceneManagerObject.Instance.LoadScene(0);
     }
