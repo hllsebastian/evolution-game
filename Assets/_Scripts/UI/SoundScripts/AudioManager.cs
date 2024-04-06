@@ -24,10 +24,10 @@ public class AudioManager : MonoBehaviour
         }
         
     }
-   
+
     void Start()
     {
-        PlayMusic(0);    
+        
     }
 
     void Update()
